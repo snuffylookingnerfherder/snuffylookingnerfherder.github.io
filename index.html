@@ -17,8 +17,22 @@
     .card-pack {
     }
 
+    .image-pack-big {
+      width: 200px;
+    }
+
     .image-pack-small {
       width: 50px;
+    }
+
+    a {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    a:hover, a:focus {
+        color: #000000;
+        text-decoration: none;
     }
   </style>
 </head>
@@ -28,15 +42,14 @@
   <body class="bg-light">
     <div class="container">
       <div class="py-5 text-center">
-        <h2>Build a Draft Kit!</h2>
-        <p class="lead">Use this form to build a Star Wars Destiny Tabletop Simulator Draft Kit. Select how many players
-          in your draft, select what packs should go in and select the mode, Draft or Sealed.</p>
+        <h2>Build a Draft Kit</h2>
+        <p>For Super Destiny mod of Tabletop Simulator</p>
       </div>
 
       <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Your cart</span>
+            <span class="text-muted">Selected Packs</span>
             <span class="badge badge-secondary badge-pill">3</span>
           </h4>
           <ul class="list-group mb-3">
@@ -86,7 +99,7 @@
         <div class="col-md-8 order-md-1">
           <form class="needs-validation" novalidate>
             <div class="row">
-              <div class="col-md-12 mb-6">
+              <div class="col-md-4 mb-6">
                 <div class="form-group">
                   <label for="formControlRange">Number of Players:&nbsp;</label><label for="formControlRange"
                     id="numPlayersSliderLabel">2</label>
@@ -94,177 +107,124 @@
                     id="formControlRange">
                 </div>
               </div>
+              <div class="col-md-4 mb-6">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <label class="form-check-label" for="inlineRadio1">Draft (6 Packs)</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                  <label class="form-check-label" for="inlineRadio2">Sealed (9 Packs)</label>
+                </div>
+              </div>
+              <div class="col-md-4 mb-6">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <label class="form-check-label" for="inlineRadio1">Rivals</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                  <label class="form-check-label" for="inlineRadio2">Allies of Necesessity</label>
+                </div>
+              </div>
             </div>
 
             <div class="row">
-              <h2>Select Packs</h2>
-              <div class="col-md-4">
+              <h4>Select Packs</h4>
+              <div class="col-md-12">
+                <div class="input-group">
                 <a href="#" id="convPack" data-setCode="conv">
                   <div class="card card-pack">
-                    <img class="card-image-top" src="./images/swd16_main.png">
+                    <img class="card-image-top image-pack-big" src="./images/swd16_main.png">
                     <div class="card-body">
                       <h5 class="card-title text-center">Convergence</h5>
                     </div>
                   </div>
                 </a>
-              </div>
-              <div class="col-md-4">
                 <a href="#" id="sohPack" data-setCode="soh">
                   <div class="card card-pack">
-                    <img class="card-image-top" src="./images/swd18_main.png">
+                    <img class="card-image-top image-pack-big" src="./images/swd18_main.png">
                     <div class="card-body">
                       <h5 class="card-title text-center">Spark of Hope</h5>
                     </div>
                   </div>
                 </a>
-              </div>
-              <div class="col-md-4">
                 <a href="#" id="cmPack" data-setCode="cm">
                   <div class="card card-pack">
-                    <img class="card-image-top" src="./images/swd16_main.png">
+                    <img class="card-image-top image-pack-big" src="./images/swd16_main.png">
                     <div class="card-body">
                       <h5 class="card-title text-center">Covert Missions</h5>
                     </div>
                   </div>
                 </a>
+                </div>
               </div>
             </div>
 
             <div class="row">
-              <div class="col-md-12 mb-6">
+              <div class="col-md-12">
                 <div class="input-group">
-                  <input type="button" class="form-control" id="legPack" value="leg" placeholder="Username">
-                  <input type="button" class="form-control" id="wotfPack" value="wotf" placeholder="Username">
-                  <input type="button" class="form-control" id="atgPack" value="atg" placeholder="Username">
+                <a href="#" id="legPack" data-setCode="leg">
+                  <div class="card card-pack">
+                    <img class="card-image-top image-pack-big" src="./images/swd11_main.png">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">Legacies</h5>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" id="wotfPack" data-setCode="wotf">
+                  <div class="card card-pack">
+                    <img class="card-image-top image-pack-big" src="./images/swd12_main.png">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">Way of the Force</h5>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" id="atgPack" data-setCode="atg">
+                  <div class="card card-pack">
+                    <img class="card-image-top image-pack-big" src="./images/swd13_main.png">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">Across the Galaxy</h5>
+                    </div>
+                  </div>
+                </a>
                 </div>
               </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="email">Email <span class="text-muted">(Optional)</span></label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="address">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
             </div>
 
             <div class="row">
-              <div class="col-md-5 mb-3">
-                <label for="country">Country</label>
-                <select class="custom-select d-block w-100" id="country" required>
-                  <option value="">Choose...</option>
-                  <option>United States</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please select a valid country.
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="state">State</label>
-                <select class="custom-select d-block w-100" id="state" required>
-                  <option value="">Choose...</option>
-                  <option>California</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please provide a valid state.
-                </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <label for="zip">Zip</label>
-                <input type="text" class="form-control" id="zip" placeholder="" required>
-                <div class="invalid-feedback">
-                  Zip code required.
-                </div>
-              </div>
-            </div>
-            <hr class="mb-4">
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="same-address">
-              <label class="custom-control-label" for="same-address">Shipping address is the same as my billing
-                address</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="save-info">
-              <label class="custom-control-label" for="save-info">Save this information for next time</label>
-            </div>
-            <hr class="mb-4">
-
-            <h4 class="mb-3">Payment</h4>
-
-            <div class="d-block my-3">
-              <div class="custom-control custom-radio">
-                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                <label class="custom-control-label" for="credit">Credit card</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label" for="debit">Debit card</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label" for="paypal">PayPal</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="cc-name">Name on card</label>
-                <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                <small class="text-muted">Full name as displayed on card</small>
-                <div class="invalid-feedback">
-                  Name on card is required
-                </div>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="cc-number">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                <div class="invalid-feedback">
-                  Credit card number is required
+              <div class="col-md-12">
+                <div class="input-group">
+                <a href="#" id="awPack" data-setCode="aw">
+                  <div class="card card-pack">
+                    <img class="card-image-top image-pack-big" src="./images/swd03_booster_main.png">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">Awakenings</h5>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" id="sorPack" data-setCode="sor">
+                  <div class="card card-pack">
+                    <img class="card-image-top image-pack-big" src="./images/swd04_main.png">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">Spirit of Rebelion</h5>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" id="eawPack" data-setCode="eaw">
+                  <div class="card card-pack">
+                    <img class="card-image-top image-pack-big" src="./images/swd07_main.png">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">Empire at War</h5>
+                    </div>
+                  </div>
+                </a>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-3 mb-3">
-                <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                <div class="invalid-feedback">
-                  Expiration date required
-                </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <label for="cc-cvv">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                <div class="invalid-feedback">
-                  Security code required
-                </div>
-              </div>
-            </div>
-            <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
           </form>
         </div>
       </div>
-
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2017-2019 Company Name</p>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-      </footer>
     </div>
     <script src="./js/entities.js"></script>
     <script src="./js/draftkit.js"></script>
