@@ -1,36 +1,16 @@
 var setCards = {}
 
-const createDraftKit = (numberOfPlayers, packSplit) => {
+const createDraftKit = (numberOfPlayers, packSplit, draftSet) => {
     let players = []
     for (var i = 0; i < numberOfPlayers; i++) {
         let packs = []
         for (var j = 0; j < packSplit.length; j++) {
+
             packs.push(createDraftPack('Player ' + (i + 1) + ' Pack ' + (j + 1), packSplit[j]));
         }
+        packs.push(createDraftSet(draftSet));
         players.push(new Player('Player ' + (i + 1), packs))
     }
-
-    // let p1p1cards = [
-    //     new Card('Millennium Falcon', 49333, 'AtG', 103),
-    //     new Card('Millennium Falcon', 49333, 'AtG', 103),
-    //     new Card('Millennium Falcon', 49333, 'AtG', 103),
-    //     new Card('Millennium Falcon', 49333, 'AtG', 103),
-    //     new Card('Millennium Falcon', 49333, 'AtG', 103)
-    // ]
-    // let p1pack1 = new Pack('P1 Pack 1', p1p1cards);
-    // let p2p1cards = [
-    //     new Card('X-34 Landspeeder', 49612, 'AtG', 151),
-    //     new Card('X-34 Landspeeder', 49612, 'AtG', 151),
-    //     new Card('X-34 Landspeeder', 49612, 'AtG', 151),
-    //     new Card('X-34 Landspeeder', 49612, 'AtG', 151),
-    //     new Card('X-34 Landspeeder', 49612, 'AtG', 151)
-    // ]
-    // let p2pack1 = new Pack('P1 Pack 1', p2p1cards);
-
-    // let players = [
-    //     new Player('Player 1', [p1pack1]),
-    //     new Player('Player 2', [p2pack1])
-    // ]
 
     let draftBag = new Bag("Draft Kit", players);
     
@@ -57,6 +37,7 @@ const processSet = (cards) => {
     rares = []
     uncommons = []
     commons = []
+    starters = []
     for (var i = 0; i < cards.length; i++) {
         if (cards[i].rarity_code === 'L') {
             legendaries.push(processCard(cards[i]))
@@ -70,12 +51,16 @@ const processSet = (cards) => {
         else if (cards[i].rarity_code === 'C') {
             commons.push(processCard(cards[i]))
         }
+        else if (cards[i].rarity_code === 'S') {
+            starters.push(processCard(cards[i]))
+        }
     }
     return {
         legendaries: legendaries,
         rares: rares,
         uncommons: uncommons,
-        commons: commons
+        commons: commons,
+        starters: starters
     }
 }
 
@@ -86,6 +71,16 @@ const processCard = (card) => {
         setNumber: card.position,
         cardId: parseInt(card.ttscardid)
     }
+}
+
+const createDraftSet = (setName) => {
+    let set = getSetCards(setName);
+    cards = [];
+    for (var i = 0; i < set.starters.length; i++) {
+        let card = set.starters[i];
+        cards.push(new Card(card.name, card.cardId, card.setName, card.setNumber))       
+    }
+    return new Pack('Draft Set ' + setName, cards);
 }
 
 const createDraftPack = (packName, setName) => {

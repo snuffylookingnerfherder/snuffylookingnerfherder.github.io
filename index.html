@@ -50,48 +50,15 @@
         <div class="col-md-4 order-md-2 mb-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Selected Packs</span>
-            <span class="badge badge-secondary badge-pill">3</span>
+            <span class="badge badge-secondary badge-pill" id="packCount">0</span>
           </h4>
-          <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Product name</h6>
-                <small class="text-muted">Brief description</small>
-              </div>
-              <span class="text-muted">$12</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Second product</h6>
-                <small class="text-muted">Brief description</small>
-              </div>
-              <span class="text-muted">$8</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Third item</h6>
-                <small class="text-muted">Brief description</small>
-              </div>
-              <span class="text-muted">$5</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between bg-light">
-              <div class="text-success">
-                <h6 class="my-0">Promo code</h6>
-                <small>EXAMPLECODE</small>
-              </div>
-              <span class="text-success">-$5</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total (USD)</span>
-              <strong>$20</strong>
-            </li>
+          <ul class="list-group mb-3" id="packList">
           </ul>
 
           <form class="card p-2">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Promo code">
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-secondary">Redeem</button>
+              <div class="input-group-append" style="margin: auto">
+                <button type="submit" class="btn btn-secondary text-center" onclick="download()">Download Draft Kit</button>
               </div>
             </div>
           </form>
@@ -109,22 +76,24 @@
               </div>
               <div class="col-md-4 mb-6">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                  <label class="form-check-label" for="inlineRadio1">Draft (6 Packs)</label>
+                  <input class="form-check-input" type="radio" name="typeSelect" id="draftSelect" value="6" checked>
+                  <label class="form-check-label" for="draftSelect">Draft (6 Packs)</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                  <label class="form-check-label" for="inlineRadio2">Sealed (9 Packs)</label>
+                  <input class="form-check-input" type="radio" name="typeSelect" id="sealedSelect" value="9">
+                  <label class="form-check-label" for="sealedSelect">Sealed (9 Packs)</label>
                 </div>
               </div>
               <div class="col-md-4 mb-6">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                  <label class="form-check-label" for="inlineRadio1">Rivals</label>
+                  <img class="card-image-top image-pack-small" src="./images/swd17_main.png">
+                  <input class="form-check-input" type="radio" name="draftSetSelect" id="aonSelect" value="aon" checked>
+                  <label class="form-check-label" for="aonSelect">Allies of Necesessity</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                  <label class="form-check-label" for="inlineRadio2">Allies of Necesessity</label>
+                  <img class="card-image-top image-pack-small" src="./images/swd06_main.png">
+                  <input class="form-check-input" type="radio" name="draftSetSelect" id="rivalsSelect" value="riv">
+                  <label class="form-check-label" for="rivalsSelect">Rivals</label>
                 </div>
               </div>
             </div>
@@ -133,7 +102,7 @@
               <h4>Select Packs</h4>
               <div class="col-md-12">
                 <div class="input-group">
-                <a href="#" id="convPack" data-setCode="conv">
+                <a href="#" id="convPack" data-setCode="conv" data-img="./images/swd16_main.png" data-name="Convergence" onclick="addPackToList(this)">
                   <div class="card card-pack">
                     <img class="card-image-top image-pack-big" src="./images/swd16_main.png">
                     <div class="card-body">
@@ -141,7 +110,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="#" id="sohPack" data-setCode="soh">
+                <a href="#" id="sohPack" data-setCode="soh" data-img="./images/swd18_main.png" data-name="Spark of Hope" onclick="addPackToList(this)">
                   <div class="card card-pack">
                     <img class="card-image-top image-pack-big" src="./images/swd18_main.png">
                     <div class="card-body">
@@ -149,9 +118,9 @@
                     </div>
                   </div>
                 </a>
-                <a href="#" id="cmPack" data-setCode="cm">
+                <a href="#" id="cmPack" data-setCode="cm" data-img="./images/swd19_main.png" data-name="Covert Missions" onclick="addPackToList(this)">
                   <div class="card card-pack">
-                    <img class="card-image-top image-pack-big" src="./images/swd16_main.png">
+                    <img class="card-image-top image-pack-big" src="./images/swd19_main.png">
                     <div class="card-body">
                       <h5 class="card-title text-center">Covert Missions</h5>
                     </div>
@@ -164,7 +133,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="input-group">
-                <a href="#" id="legPack" data-setCode="leg">
+                <a href="#" id="legPack" data-setCode="leg" data-img="./images/swd11_main.png" data-name="Legacies" onclick="addPackToList(this)">
                   <div class="card card-pack">
                     <img class="card-image-top image-pack-big" src="./images/swd11_main.png">
                     <div class="card-body">
@@ -172,7 +141,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="#" id="wotfPack" data-setCode="wotf">
+                <a href="#" id="wotfPack" data-setCode="wotf" data-img="./images/swd12_main.png" data-name="Way of the Force" onclick="addPackToList(this)">
                   <div class="card card-pack">
                     <img class="card-image-top image-pack-big" src="./images/swd12_main.png">
                     <div class="card-body">
@@ -180,7 +149,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="#" id="atgPack" data-setCode="atg">
+                <a href="#" id="atgPack" data-setCode="atg" data-img="./images/swd13_main.png" data-name="Across the Galaxy" onclick="addPackToList(this)">
                   <div class="card card-pack">
                     <img class="card-image-top image-pack-big" src="./images/swd13_main.png">
                     <div class="card-body">
@@ -195,7 +164,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="input-group">
-                <a href="#" id="awPack" data-setCode="aw">
+                <a href="#" id="awPack" data-setCode="aw" data-img="./images/swd03_booster_main.png" data-name="Awakenings" onclick="addPackToList(this)">
                   <div class="card card-pack">
                     <img class="card-image-top image-pack-big" src="./images/swd03_booster_main.png">
                     <div class="card-body">
@@ -203,7 +172,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="#" id="sorPack" data-setCode="sor">
+                <a href="#" id="sorPack" data-setCode="sor" data-img="./images/swd04_main.png" data-name="Spirit of Rebelion" onclick="addPackToList(this)">
                   <div class="card card-pack">
                     <img class="card-image-top image-pack-big" src="./images/swd04_main.png">
                     <div class="card-body">
@@ -211,7 +180,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="#" id="eawPack" data-setCode="eaw">
+                <a href="#" id="eawPack" data-setCode="eaw" data-img="./images/swd07_main.png" data-name="Empire at War" onclick="addPackToList(this)">
                   <div class="card card-pack">
                     <img class="card-image-top image-pack-big" src="./images/swd07_main.png">
                     <div class="card-body">
@@ -229,21 +198,70 @@
     <script src="./js/entities.js"></script>
     <script src="./js/draftkit.js"></script>
     <script>
+      var packList = {}
       var slider = document.getElementById("numPlayersSlider");
       var sliderLabel = document.getElementById("numPlayersSliderLabel");
+      var packCount = document.getElementById("packCount");
+      var packUL = document.getElementById("packList");
       sliderLabel.innerHTML = slider.value; // Display the default slider value
 
       // Update the current slider value (each time you drag the slider handle)
       slider.oninput = function () {
         sliderLabel.innerHTML = this.value;
       }
-      numPlayers = 2;
-      packSplit = ['Conv', 'SoH', 'CM', 'Conv', 'SoH', 'CM']
+      
+      var typeSelects = document.getElementsByName('typeSelect'); 
+      var draftSetSelects = document.getElementsByName('draftSetSelect'); 
 
-      let draftKit = createDraftKit(numPlayers, packSplit);
-      console.log(draftKit)
+      function getCheckedValue(selects, fallback) {
+        for (var i = 0; i < selects.length; i++) {
+          if (selects[i].checked) {
+            return selects[i].value;
+          }
+        }
+        return fallback;
+      }
 
-            //downloadJson(draftKit);
+      function removePackFromList(pack) {
+        delete packList[pack.id];
+        packUL.removeChild(pack);
+        var count = parseInt(packCount.innerText, 0) - 1;
+        packCount.innerText = count;
+      }
+
+      function addPackToList(pack) {
+        var numPacks = parseInt(getCheckedValue(typeSelects, '6'));
+
+        if (Object.keys(packList).length < numPacks) {
+          var dataset = pack.dataset;
+          var packHtml = 
+            `<div>
+                <img class="card-image-top image-pack-small" src="${dataset.img}">
+                <small class="text-muted">${dataset.name}</small>
+              </div>
+              <a href="#" onclick="removePackFromList(this.parentElement)"><span class="text-muted">X</span></a>`;
+          var id = 'Pack' + Math.random();
+          packList[id] = dataset.setcode;
+          var packLI = document.createElement("li");
+          packLI.id = id;
+          packLI.dataset['setcode'] = dataset.setcode;
+          packLI.classList = 'list-group-item d-flex justify-content-between lh-condensed';
+          packLI.innerHTML = packHtml;
+          packUL.appendChild(packLI);
+          var count = parseInt(packCount.innerText, 0) + 1;
+          packCount.innerText = count;
+        }
+      }
+
+      function download () {
+        numPlayers = parseInt(slider.value);
+        draftSet = getCheckedValue(draftSetSelects, 'aon')
+        
+        let draftKit = createDraftKit(numPlayers, Object.values(packList), draftSet);
+        console.log(draftKit);
+      
+        downloadJson(draftKit);
+      }
     </script>
   </body>
 
