@@ -263,6 +263,9 @@
       }
 
       function download () {
+        var numPacks = parseInt(getCheckedValue(typeSelects, '6'));
+        var type = numPacks == 6 ? 'draft' : 'sealed';
+
         numPlayers = parseInt(slider.value);
         draftSet = getCheckedValue(draftSetSelects, 'aon')
         
@@ -270,6 +273,12 @@
         console.log(draftKit);
       
         downloadJson(draftKit);
+        ga('send', {
+          hitType: 'event',
+          eventCategory: type,
+          eventAction: 'download',
+          eventLabel: draftSet + ':' + Object.values(packList).join(',')
+        });
       }
     </script>
   </body>
